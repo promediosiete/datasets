@@ -1,0 +1,51 @@
+﻿fecha,hora,tiempo,temperatura,sensor,nombre_sensor,tipo_sensor
+2026-09-03,08:00,0,81.2,A,Horno principal,Termopar K
+2026-09-03,08:20,5,79.8,A,Horno principal,Termopar K
+2026-09-03,08:40,10,78.4,B,Línea de salida,RTD PT100
+2026-09-04,09:00,15,76.9,B,Línea de salida,RTD PT100
+2026-09-04,09:10,20,75.1,A,Horno principal,Termopar K
+2026-09-04,09:30,25,73.6,C,Ambiente laboratorio,Termistor NTC
+2026-09-05,09:50,30,72.4,C,Ambiente laboratorio,Termistor NTC
+2026-09-05,10:10,35,70.9,B,Línea de salida,RTD PT100
+2026-09-05,10:30,40,69.5,A,Horno principal,Termopar K
+2026-09-06,10:50,45,68.1,C,Ambiente laboratorio,Termistor NTC
+2026-09-06,11:10,50,66.8,A,Horno principal,Termopar K
+2026-09-06,11:30,55,,A,Horno principal,Termopar K
+2026-09-07,11:50,60,64.1,B,Línea de salida,RTD PT100
+2026-09-07,12:05,65,62.9,B,Línea de salida,RTD PT100
+2026-09-07,08:00,70,61.7,A,Horno principal,Termopar K
+2026-09-08,08:20,75,60.4,C,Ambiente laboratorio,Termistor NTC
+2026-09-08,08:40,80,59.2,C,Ambiente laboratorio,Termistor NTC
+2026-09-08,09:00,85,58.0,B,Línea de salida,RTD PT100
+2026-09-09,09:10,90,56.9,A,Horno principal,Termopar K
+2026-09-09,09:30,95,55.7,C,Ambiente laboratorio,Termistor NTC
+2026-09-10,09:50,100,54.6,A,Horno principal,Termopar K
+2026-09-10,10:10,105,53.5,A,Horno principal,Termopar K
+2026-09-11,10:30,110,52.4,B,,RTD PT100
+2026-09-11,10:50,115,51.3,B,Línea de salida,RTD PT100
+2026-09-12,11:10,120,50.2,A,Horno principal,Termopar K
+2026-09-12,11:30,125,49.2,C,Ambiente laboratorio,Termistor NTC
+2026-09-13,11:50,130,48.2,C,Ambiente laboratorio,Termistor NTC
+2026-09-13,12:05,135,47.2,B,Línea de salida,RTD PT100
+2026-09-14,08:00,140,46.2,A,Horno principal,Termopar K
+2026-09-14,08:20,145,45.3,C,Ambiente laboratorio,Termistor NTC
+2026-09-15,08:40,150,44.4,A,Horno principal,Termopar K
+2026-09-15,09:00,155,43.5,A,Horno principal,Termopar K
+2026-09-16,09:10,160,42.6,B,Línea de salida,RTD PT100
+2026-09-16,09:30,165,41.8,B,Línea de salida,RTD PT100
+2026-09-17,09:50,170,41.0,A,Horno principal,Termopar K
+2026-09-17,10:10,175,40.2,C,Ambiente laboratorio,Termistor NTC
+2026-09-18,,180,39.4,C,Ambiente laboratorio,Termistor NTC
+2026-09-18,10:50,185,38.6,B,Línea de salida,RTD PT100
+2026-09-19,11:10,190,37.9,A,Horno principal,Termopar K
+2026-09-19,11:30,195,37.2,C,Ambiente laboratorio,Termistor NTC
+2026-09-20,11:50,200,36.5,A,Horno principal,Termopar K
+2026-09-20,12:05,205,35.8,A,Horno principal,Termopar K
+2026-09-21,08:00,210,35.1,B,Línea de salida,RTD PT100
+2026-09-21,08:20,215,34.5,B,Línea de salida,RTD PT100
+2026-09-22,08:40,220,33.9,A,Horno principal,Termopar K
+2026-09-22,09:00,,33.3,C,Ambiente laboratorio,Termistor NTC
+2026-09-23,09:10,230,32.7,C,Ambiente laboratorio,Termistor NTC
+2026-09-23,09:30,235,32.1,B,Línea de salida,RTD PT100
+2026-09-24,09:50,240,31.5,A,Horno principal,Termopar K
+2026-09-24,10:10,245,30.9,C,Ambiente laboratorio,Termistor NTC
