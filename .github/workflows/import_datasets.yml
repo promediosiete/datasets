@@ -26,9 +26,9 @@ jobs:
           mkdir -p /tmp/datasets
           curl -L --fail --retry 3 "https://datos.gob.cl/dataset/661f6335-4b09-4635-a8f4-e67298aacf7d/resource/2803a128-fa2e-4ff3-a91f-62507792b1b4/download/nominaviveros.csv" -o /tmp/datasets/nominaviveros.csv
           curl -L --fail --retry 3 "https://datos.gob.cl/dataset/bc81a3e9-d01d-40a2-9c84-111668c3ebb2/resource/dccbad1c-e3b8-428a-926c-c72109a4f548/download/semilleroovm2015-2016.csv" -o /tmp/datasets/semilleroovm2015-2016.csv
-          curl -L --fail --retry 3 "https://datos.salud.gob.ar/dataset/ceaa8e87-297e-4348-84b8-5c643e172500/resource/30d76bcb-b8eb-4bf3-863e-c87d41724647/download/informacion-publica-dengue-zika-nacional-anio-2022.csv" -o /tmp/datasets/dengue_zika_2022_original.csv
-          curl -L --fail --retry 3 "https://www.argentina.gob.ar/sites/default/files/2021/03/datos_sobre_nacidos_vivos_2024.csv" -o /tmp/datasets/nacidos_vivos_2024.csv
-          curl -L --fail --retry 3 "https://www.argentina.gob.ar/sites/default/files/2021/03/datos_sobre_defunciones_2024.csv" -o /tmp/datasets/defunciones_2024.csv
+          curl -k -L --fail --retry 3 "https://datos.salud.gob.ar/dataset/ceaa8e87-297e-4348-84b8-5c643e172500/resource/30d76bcb-b8eb-4bf3-863e-c87d41724647/download/informacion-publica-dengue-zika-nacional-anio-2022.csv" -o /tmp/datasets/dengue_zika_2022_original.csv
+          curl -k -L --fail --retry 3 "https://www.argentina.gob.ar/sites/default/files/2021/03/datos_sobre_nacidos_vivos_2024.csv" -o /tmp/datasets/nacidos_vivos_2024.csv
+          curl -k -L --fail --retry 3 "https://www.argentina.gob.ar/sites/default/files/2021/03/datos_sobre_defunciones_2024.csv" -o /tmp/datasets/defunciones_2024.csv
 
       - name: Verificar integridad
         shell: bash
