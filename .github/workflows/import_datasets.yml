@@ -1,0 +1,63 @@
+name: Importar datasets publicos
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/import_datasets.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Descargar fuentes oficiales
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/datasets
+          curl -L --fail --retry 3 "https://datos.gob.cl/dataset/661f6335-4b09-4635-a8f4-e67298aacf7d/resource/2803a128-fa2e-4ff3-a91f-62507792b1b4/download/nominaviveros.csv" -o /tmp/datasets/nominaviveros.csv
+          curl -L --fail --retry 3 "https://datos.gob.cl/dataset/bc81a3e9-d01d-40a2-9c84-111668c3ebb2/resource/dccbad1c-e3b8-428a-926c-c72109a4f548/download/semilleroovm2015-2016.csv" -o /tmp/datasets/semilleroovm2015-2016.csv
+          curl -L --fail --retry 3 "https://datos.salud.gob.ar/dataset/ceaa8e87-297e-4348-84b8-5c643e172500/resource/30d76bcb-b8eb-4bf3-863e-c87d41724647/download/informacion-publica-dengue-zika-nacional-anio-2022.csv" -o /tmp/datasets/dengue_zika_2022_original.csv
+          curl -L --fail --retry 3 "https://www.argentina.gob.ar/sites/default/files/2021/03/datos_sobre_nacidos_vivos_2024.csv" -o /tmp/datasets/nacidos_vivos_2024.csv
+          curl -L --fail --retry 3 "https://www.argentina.gob.ar/sites/default/files/2021/03/datos_sobre_defunciones_2024.csv" -o /tmp/datasets/defunciones_2024.csv
+
+      - name: Verificar integridad
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/datasets
+          echo "08bccf2af53df6c4e46bba6299213a6d28d513f4127e80effcc73cf861ee5d11  nominaviveros.csv" | sha256sum -c -
+          echo "37c5bb8ac566d83314677268099c92141a625d6220829db15b1847fe3320da2c  semilleroovm2015-2016.csv" | sha256sum -c -
+          echo "8b99074adaf46142c994853a0992df333357f4d1943778957a11186a20deac20  dengue_zika_2022_original.csv" | sha256sum -c -
+          echo "ac0ac5ff8794f73c57a02b494b97401431ce901d4f5f0a5df877f372da9d85d2  nacidos_vivos_2024.csv" | sha256sum -c -
+          echo "9b31baa9fb577f7c95fd5b159695a1b970fa2a2b1811f5cd5015cd03370bae5a  defunciones_2024.csv" | sha256sum -c -
+
+      - name: Preparar archivos
+        shell: bash
+        run: |
+          set -euo pipefail
+          iconv -f ISO-8859-1 -t UTF-8 /tmp/datasets/nominaviveros.csv > viveros_registrados.csv
+          iconv -f ISO-8859-1 -t UTF-8 /tmp/datasets/semilleroovm2015-2016.csv > semilleros_ogm_2015_2016.csv
+          iconv -f ISO-8859-1 -t UTF-8 /tmp/datasets/dengue_zika_2022_original.csv > dengue_zika_2022.csv
+          cp /tmp/datasets/nacidos_vivos_2024.csv nacidos_vivos_2024.csv
+          cp /tmp/datasets/defunciones_2024.csv defunciones_2024.csv
+
+      - name: Incorporar datasets y retirar flujo temporal
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add viveros_registrados.csv semilleros_ogm_2015_2016.csv dengue_zika_2022.csv nacidos_vivos_2024.csv defunciones_2024.csv
+          git rm .github/workflows/import_datasets.yml
+          git commit -m "data: agrega datasets publicos en espanol"
+          git push origin HEAD:main
